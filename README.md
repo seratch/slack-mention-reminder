@@ -2,7 +2,11 @@
 
 "Mention Reminder" is a custom Slack app that allows you to set up reminders simply by mentioning its bot!
 
+<img width="500" src="https://github.com/seratch/slack-mention-reminder/assets/19658/e1323357-c449-46fa-ad84-b406446b008a">
+
 With this app, there's no need for you to run the `/remind` command. Why do we prefer a mention? It could be particularly useful when you aim to automate the creation of reminders within a Slack workflow.
+
+<img width="500" src="https://github.com/seratch/slack-mention-reminder/assets/19658/23760d3b-0224-46ee-8633-38e1b850afd5">
 
 ## How it works
 
@@ -27,6 +31,8 @@ Hey @kaz, you need to submit this month's expense report by the end of today!
 ```
 
 The time format may be in epoch time (in seconds). When using this app along with Slack's workflow builder, you can use a format that can be embedded:
+
+<img width="400" src="https://github.com/seratch/slack-mention-reminder/assets/19658/d4d1ac02-bbc7-4c0b-aa09-1ea6cce10a37">
 
 ```
 @MentionReminder remind #tasks at 1706183820
@@ -66,13 +72,15 @@ Hey @kaz, this is @brian's last week. Could you please check if the following ac
 
 ### Add a step mentioning this app in your workflow
 
-- Create a workflow with the following steps:
-  - Open a form to collect inputs
-    - Where/who to send (Select a channel/user)
-    - When to send (Date and time)
-    - The text message (Rich messsage composer)
-  - Send a message mentioning this app's bot user
-    - `@MentionReminder remind [channe/user] at [datetime]\n[message]`
+Create a workflow with the following steps:
+- Open a form to collect inputs
+  - Where/who to send (Select a channel/user)
+  - When to send (Date and time)
+  - The text message (Rich messsage composer)
+- Send a message mentioning this app's bot user
+  - `@MentionReminder remind [channe/user] at [datetime]\n[message]`
+
+
 
 ## License
 
