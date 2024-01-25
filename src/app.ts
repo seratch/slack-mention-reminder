@@ -58,5 +58,3 @@ app.event("app_mention", async ({ payload, context }) => {
     });
   }
 });
-
-app.anyMessage(async () => {});
