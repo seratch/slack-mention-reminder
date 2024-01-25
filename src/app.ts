@@ -55,7 +55,7 @@ app.event("app_mention", async ({ payload, context }) => {
       }
     }
   } else {
-    error = "Failed to parse the input: " + "`" + payload.text + "`";
+    error = "Failed to parse the input: " + "```" + payload.text + "```";
   }
   if (error) {
     await context.say({
