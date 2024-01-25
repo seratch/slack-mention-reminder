@@ -61,10 +61,12 @@ Hey @kaz, this is @brian's last week. Could you please check if the following ac
 
 ### Run the app
 
+- Install Node.js 20 or newer version
 - Clone this repo
 - Run `npm i` to install the dependencies
-- `export SLACK_BOT_TOKEN=xoxb-....`
-- `export SLACK_APP_TOKEN=xapp-...`
+- Run `export SLACK_BOT_TOKEN=xoxb-....` (Settings > Install App)
+- Run `export SLACK_APP_TOKEN=xapp-...` (Settings > Basic Information > App-Level Tokens)
+- Run `npm start`
 
 ### Invite this app's bot user
 
@@ -73,14 +75,13 @@ Hey @kaz, this is @brian's last week. Could you please check if the following ac
 ### Add a step mentioning this app in your workflow
 
 Create a workflow with the following steps:
+
 - Open a form to collect inputs
   - Where/who to send (Select a channel/user)
   - When to send (Date and time)
   - The text message (Rich messsage composer)
 - Send a message mentioning this app's bot user
   - `@MentionReminder remind [channe/user] at [datetime]\n[message]`
-
-
 
 ## License
 
