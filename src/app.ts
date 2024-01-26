@@ -18,6 +18,10 @@ export const app = new SlackApp({
 const parser = /<@.+>\s+remind\s+<#?@?(\w+)\|?.*>\s+at\s+(.+)\n([^]+)$/;
 
 app.event("app_mention", async ({ payload, context }) => {
+  if (payload.text.match(/^\s*<@.+>\s*$/)) {
+    // Skip a mention to invite the bot user
+    return;
+  }
   const parsed = parser.exec(payload.text);
   let error: string | undefined;
   if (parsed) {
@@ -49,16 +53,21 @@ app.event("app_mention", async ({ payload, context }) => {
     if (!error) {
       try {
         await context.client.chat.scheduleMessage({ channel, text, post_at });
+        await context.say({
+          thread_ts: payload.thread_ts || payload.ts,
+          text: `:white_check_mark: Your reminder is successfully set! A message in <#${channel}> will be posted at ${new Date(post_at * 1000).toISOString()}.`,
+        });
       } catch (e: unknown) {
         const code = (e as SlackAPIError).error;
         error = `Failed to schedule a message due to ${code}`;
       }
     }
   } else {
-    error = "Failed to parse the input: " + "```" + payload.text + "```";
+    error = "Failed to parse your mention's inputs";
   }
   if (error) {
     await context.say({
+      thread_ts: payload.thread_ts || payload.ts,
       text: `:x: Oops! This app failed to parse your input! (${error})`,
     });
   }
