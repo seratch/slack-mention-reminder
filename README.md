@@ -2,11 +2,13 @@
 
 "Mention Reminder" is a custom Slack app that allows you to set up reminders simply by mentioning its bot!
 
-<img width="500" src="https://github.com/seratch/slack-mention-reminder/assets/19658/e1323357-c449-46fa-ad84-b406446b008a">
-
 With this app, there's no need for you to run the `/remind` command. Why do we prefer a mention? It could be particularly useful when you aim to automate the creation of reminders within a Slack workflow.
 
-<img width="500" src="https://github.com/seratch/slack-mention-reminder/assets/19658/23760d3b-0224-46ee-8633-38e1b850afd5">
+<img width="500" src="https://github.com/seratch/slack-mention-reminder/assets/19658/96f2f8c7-3a05-4a4b-be0a-dd6871c1e943">
+
+When your workflow sends a message mentioning this app's bot user, this app will set up a reminder with the inputs:
+
+<img width="500" src="https://github.com/seratch/slack-mention-reminder/assets/19658/306c1911-0c10-4160-8d05-c812d52d812b">
 
 ## How it works
 
