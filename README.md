@@ -51,7 +51,7 @@ Hey @kaz, this is @brian's last week. Could you please check if the following ac
 
 - Go to https://api.slack.com/apps?new_app=1
   - Choose "From an app manifest" and select the workspace to use
-  - Switch to YAML format and past the content in `app-manifest.yml`
+  - Switch to JSON format and past the content in `./manifest.json`
 - Go to Settings > Install App
   - Install the app into your workspace
   - Save the "Bot User OAuth Token" as SLACK_BOT_TOKEN
@@ -84,6 +84,36 @@ Create a workflow with the following steps:
   - The text message (Rich messsage composer)
 - Send a message mentioning this app's bot user
   - `@MentionReminder remind [channe/user] at [datetime]\n[message]`
+
+## Local development with Slack CLI
+
+### Install CLI and grant permissions
+
+If you haven't yet installed Slack CLI, I recommend visiting [the guide page](https://api.slack.com/automation/cli/install) to do so, and allowing it to install apps into your sandbox or paid Slack workspaces. To complete this, you will need to run `slack login` command on your terminal, plus execute `/slackauthticket` with the given parameter in your Slack workspace.
+
+Please remember that either a sandbox or paid workpace is required to use the CLI.
+
+### Start your app on your local machine
+
+Once your CLI obtains the permission to install a local dev app, there is nothing else to prepare before running this template app. Clone this repo and install all the required npm packages:
+
+```bash
+git clone git@github.com:seratch/slack-mention-reminder.git slack-mention-reminder
+cd slack-mention-reminder/
+npm i
+```
+
+Now you can execute `slack run` to activate your first Slack app connected to a workspace via the CLI. The CLI automaticaly creates a new local dev app, which synchronizes the `manifest.json` data behind the scenes and establishes a Socket Mode connection (WebSocket protocol) with the authorized Slack workspace.
+
+```bash
+unset SLACK_APP_TOKEN
+unset SLACK_BOT_TOKEN
+slack run
+```
+
+If you see `[INFO]  socket-mode:SocketModeClient:0 Now connected to Slack` in the console output, the local dev app is successfully connected to your Slack workspace :tada:
+
+Unlike before, you don't need to set any environment variables such as `SLACK_BOT_TOKEN`. The CLI passes the required variables to your app instance. If you have some env variables in the terminal session, you might need to unset them (e.g., `unset SLACK_BOT_TOKEN`) to prevent potential misbehavior.
 
 ## License
 
